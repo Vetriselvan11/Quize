@@ -24,7 +24,7 @@ const ManageQuestions = () => {
         // Wait, the quiz details endpoint returns questions without correct answers. Let's create a quick way to show them or just fetch from getQuizDetails for now.
         const fetchQuestions = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/quizzes/${quizId}`, {
+                const response = await fetch(`https://quiz-backend-2ejj.onrender.com/api/quizzes/${quizId}`, {
                     headers: { 'Authorization': `Bearer ${localStorage.getItem('quiz_token')}` }
                 });
                 const data = await response.json();
