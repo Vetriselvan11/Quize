@@ -1,0 +1,49 @@
+[
+    {
+        "attempt_id": "att_30fe57dc40ce",
+        "user_id": "usr_417f8f01a574",
+        "quiz_id": "qz_ac5a911a",
+        "status": "in_progress",
+        "started_at": "2026-07-08T11:53:41.015337Z",
+        "score": 0,
+        "total_questions": 0,
+        "correct_count": 0,
+        "wrong_count": 0
+    },
+    {
+        "attempt_id": "att_5131159e53a7",
+        "user_id": "usr_417f8f01a574",
+        "quiz_id": "qz_fa7aea1b",
+        "status": "completed",
+        "started_at": "2026-07-08T11:54:34.619536Z",
+        "score": 8,
+        "total_questions": 15,
+        "correct_count": 8,
+        "wrong_count": 7,
+        "submitted_at": "2026-07-08T11:55:07.204583Z"
+    },
+    {
+        "attempt_id": "att_364fb929ecd5",
+        "user_id": "usr_417f8f01a574",
+        "quiz_id": "qz_ac5a911a",
+        "status": "completed",
+        "started_at": "2026-07-08T12:00:44.920741Z",
+        "score": 0,
+        "total_questions": 16,
+        "correct_count": 0,
+        "wrong_count": 16,
+        "submitted_at": "2026-07-08T12:00:58.017714Z"
+    },
+    {
+        "attempt_id": "att_e09bc47bb0d1",
+        "user_id": "usr_417f8f01a574",
+        "quiz_id": "qz_22c91bdc3054",
+        "status": "completed",
+        "started_at": "2026-07-08T12:19:23.323562Z",
+        "score": 1,
+        "total_questions": 2,
+        "correct_count": 1,
+        "wrong_count": 1,
+        "submitted_at": "2026-07-08T12:19:31.506640Z"
+    }
+]

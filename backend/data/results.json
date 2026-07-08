@@ -1,0 +1,200 @@
+[
+    {
+        "result_id": "res_fc1f0e218fc2",
+        "attempt_id": "att_5131159e53a7",
+        "user_id": "usr_417f8f01a574",
+        "quiz_id": "qz_fa7aea1b",
+        "answers": [
+            {
+                "question_id": "q_2d8cf154",
+                "selected_option": 1,
+                "is_correct": true
+            },
+            {
+                "question_id": "q_b42fffef",
+                "selected_option": 2,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_e8e14504",
+                "selected_option": 2,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_5be97f27",
+                "selected_option": 3,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_959a1a7e",
+                "selected_option": 0,
+                "is_correct": true
+            },
+            {
+                "question_id": "q_591d05bf",
+                "selected_option": 3,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_6ca56715",
+                "selected_option": 2,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_ec863408",
+                "selected_option": 1,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_543f9347",
+                "selected_option": 0,
+                "is_correct": true
+            },
+            {
+                "question_id": "q_5f4c6422",
+                "selected_option": 0,
+                "is_correct": true
+            },
+            {
+                "question_id": "q_4ffddc49",
+                "selected_option": 0,
+                "is_correct": true
+            },
+            {
+                "question_id": "q_e8782263",
+                "selected_option": 0,
+                "is_correct": true
+            },
+            {
+                "question_id": "q_81f879d2",
+                "selected_option": 1,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_1532adf8",
+                "selected_option": 0,
+                "is_correct": true
+            },
+            {
+                "question_id": "q_191b6ee5",
+                "selected_option": 0,
+                "is_correct": true
+            }
+        ],
+        "score": 8,
+        "percentage": 53.333333333333336,
+        "submitted_at": "2026-07-08T11:55:07.204583Z"
+    },
+    {
+        "result_id": "res_ca7836d276ed",
+        "attempt_id": "att_364fb929ecd5",
+        "user_id": "usr_417f8f01a574",
+        "quiz_id": "qz_ac5a911a",
+        "answers": [
+            {
+                "question_id": "q_11770f75",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_3ffad768",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_09bc7a8d",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_d5c103f6",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_bc7f65a2",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_9dcfec91",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_6803cffc",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_87e1a1f8",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_da3c2938",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_5262dc58",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_e168dced",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_81db007d",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_3fb86f56",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_33a39b83",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_b381d811",
+                "selected_option": null,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_cf7ed9db3b98",
+                "selected_option": 0,
+                "is_correct": false
+            }
+        ],
+        "score": 0,
+        "percentage": 0.0,
+        "submitted_at": "2026-07-08T12:00:58.017714Z"
+    },
+    {
+        "result_id": "res_b8e663f8d2b3",
+        "attempt_id": "att_e09bc47bb0d1",
+        "user_id": "usr_417f8f01a574",
+        "quiz_id": "qz_22c91bdc3054",
+        "answers": [
+            {
+                "question_id": "q_dd16cdacadf8",
+                "selected_option": 0,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_c42fafed993c",
+                "selected_option": 1,
+                "is_correct": true
+            }
+        ],
+        "score": 1,
+        "percentage": 50.0,
+        "submitted_at": "2026-07-08T12:19:31.506640Z"
+    }
+]

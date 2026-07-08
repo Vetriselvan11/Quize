@@ -1,0 +1,38 @@
+[
+    {
+        "quiz_id": "qz_22c91bdc3054",
+        "title": "java",
+        "description": "all the best",
+        "category": "programming",
+        "start_time": "2026-07-08T12:19:00.000Z",
+        "end_time": "2026-07-08T13:04:00.000Z",
+        "duration": 30,
+        "status": "active",
+        "allow_retake": false,
+        "created_at": "2026-07-08T12:04:29.750314Z"
+    },
+    {
+        "quiz_id": "qz_3fc2eeb798b4",
+        "title": "program",
+        "description": "hellow world",
+        "category": "c++",
+        "start_time": "2026-07-09T02:30:00.000Z",
+        "end_time": "2026-07-09T03:30:00.000Z",
+        "duration": 60,
+        "status": "active",
+        "allow_retake": false,
+        "created_at": "2026-07-08T12:17:47.584734Z"
+    },
+    {
+        "quiz_id": "qz_ae7b83801101",
+        "title": "program",
+        "description": "hellow world",
+        "category": "c++",
+        "start_time": "2026-07-09T02:30:00.000Z",
+        "end_time": "2026-07-09T03:30:00.000Z",
+        "duration": 60,
+        "status": "active",
+        "allow_retake": false,
+        "created_at": "2026-07-08T12:17:47.631460Z"
+    }
+]
