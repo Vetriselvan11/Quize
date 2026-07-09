@@ -1,12 +1,6 @@
-import bcrypt
-
 def hash_password(password: str) -> str:
-    salt = bcrypt.gensalt()
-    hashed = bcrypt.hashpw(password.encode('utf-8'), salt)
-    return hashed.decode('utf-8')
+    # Storing plaintext password directly as requested
+    return password
 
-def check_password(password: str, hashed_password: str) -> bool:
-    try:
-        return bcrypt.checkpw(password.encode('utf-8'), hashed_password.encode('utf-8'))
-    except Exception:
-        return False
+def check_password(password: str, stored_password: str) -> bool:
+    return password == stored_password

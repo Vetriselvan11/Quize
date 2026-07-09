@@ -5,6 +5,9 @@ from routes.user_routes import user_bp
 from routes.quiz_routes import quiz_bp
 from routes.admin_routes import admin_bp
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)

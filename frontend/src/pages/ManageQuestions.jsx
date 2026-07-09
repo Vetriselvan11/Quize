@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { adminService } from '../services/adminService';
+import { API_URL } from '../services/api';
 
 const ManageQuestions = () => {
     const { quizId } = useParams();
@@ -24,7 +25,7 @@ const ManageQuestions = () => {
         // Wait, the quiz details endpoint returns questions without correct answers. Let's create a quick way to show them or just fetch from getQuizDetails for now.
         const fetchQuestions = async () => {
             try {
-                const response = await fetch(`https://quiz-backend-2ejj.onrender.com/api/quizzes/${quizId}`, {
+                const response = await fetch(`${API_URL}/quizzes/${quizId}`, {
                     headers: { 'Authorization': `Bearer ${localStorage.getItem('quiz_token')}` }
                 });
                 const data = await response.json();

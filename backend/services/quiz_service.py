@@ -1,11 +1,10 @@
-from services.json_storage import JsonStorage
+from services.db import DB
 from utils.id_generator import generate_id
 from datetime import datetime
 
 class QuizService:
     @staticmethod
     def create_quiz(data):
-        quizzes = JsonStorage.read('quizzes.json')
         quiz = {
             "quiz_id": generate_id("qz_"),
             "title": data.get("title"),
@@ -18,50 +17,49 @@ class QuizService:
             "allow_retake": data.get("allow_retake", False),
             "created_at": datetime.utcnow().isoformat() + "Z"
         }
-        quizzes.append(quiz)
-        JsonStorage.write('quizzes.json', quizzes)
+        DB.quizzes.insert_one(quiz)
+        quiz.pop('_id', None)
         return quiz
 
     @staticmethod
     def get_all_quizzes():
-        return JsonStorage.read('quizzes.json')
+        quizzes = list(DB.quizzes.find({}, {'_id': 0}))
+        return quizzes
 
     @staticmethod
     def get_quiz(quiz_id):
-        quizzes = JsonStorage.read('quizzes.json')
-        return next((q for q in quizzes if q['quiz_id'] == quiz_id), None)
+        return DB.quizzes.find_one({'quiz_id': quiz_id}, {'_id': 0})
 
     @staticmethod
     def update_quiz(quiz_id, data):
-        quizzes = JsonStorage.read('quizzes.json')
-        for i, q in enumerate(quizzes):
-            if q['quiz_id'] == quiz_id:
-                quizzes[i].update({
-                    "title": data.get("title", q["title"]),
-                    "description": data.get("description", q["description"]),
-                    "category": data.get("category", q["category"]),
-                    "start_time": data.get("start_time", q["start_time"]),
-                    "end_time": data.get("end_time", q["end_time"]),
-                    "duration": int(data.get("duration", q["duration"])),
-                    "status": data.get("status", q["status"]),
-                    "allow_retake": data.get("allow_retake", q["allow_retake"])
-                })
-                JsonStorage.write('quizzes.json', quizzes)
-                return quizzes[i]
-        return None
+        update_data = {
+            "title": data.get("title"),
+            "description": data.get("description"),
+            "category": data.get("category"),
+            "start_time": data.get("start_time"),
+            "end_time": data.get("end_time"),
+            "duration": int(data.get("duration", 30)) if data.get("duration") else None,
+            "status": data.get("status"),
+            "allow_retake": data.get("allow_retake")
+        }
+        update_data = {k: v for k, v in update_data.items() if v is not None}
+        
+        result = DB.quizzes.find_one_and_update(
+            {'quiz_id': quiz_id},
+            {'$set': update_data},
+            return_document=True
+        )
+        if result:
+            result.pop('_id', None)
+        return result
 
     @staticmethod
     def delete_quiz(quiz_id):
-        quizzes = JsonStorage.read('quizzes.json')
-        filtered = [q for q in quizzes if q['quiz_id'] != quiz_id]
-        if len(filtered) != len(quizzes):
-            JsonStorage.write('quizzes.json', filtered)
-            return True
-        return False
+        result = DB.quizzes.delete_one({'quiz_id': quiz_id})
+        return result.deleted_count > 0
 
     @staticmethod
     def add_question(data):
-        questions = JsonStorage.read('questions.json')
         question = {
             "question_id": generate_id("q_"),
             "quiz_id": data.get("quiz_id"),
@@ -76,20 +74,14 @@ class QuizService:
             "category": data.get("category"),
             "created_at": datetime.utcnow().isoformat() + "Z"
         }
-        questions.append(question)
-        JsonStorage.write('questions.json', questions)
+        DB.questions.insert_one(question)
+        question.pop('_id', None)
         return question
 
     @staticmethod
     def get_questions_for_quiz(quiz_id):
-        questions = JsonStorage.read('questions.json')
-        return [q for q in questions if q['quiz_id'] == quiz_id]
+        return list(DB.questions.find({'quiz_id': quiz_id}, {'_id': 0}))
 
     @staticmethod
     def get_available_quizzes():
-        quizzes = JsonStorage.read('quizzes.json')
-        available = []
-        for q in quizzes:
-            if q['status'] == 'active':
-                available.append(q)
-        return available
+        return list(DB.quizzes.find({'status': 'active'}, {'_id': 0}))

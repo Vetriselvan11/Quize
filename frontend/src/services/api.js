@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+export const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:5000/api';
+
 const api = axios.create({
-    baseURL: 'https://quiz-backend-2ejj.onrender.com/api',
+    baseURL: API_URL,
 });
 
 api.interceptors.request.use((config) => {

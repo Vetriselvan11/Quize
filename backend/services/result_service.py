@@ -1,19 +1,16 @@
-from services.json_storage import JsonStorage
+from services.db import DB
 from utils.id_generator import generate_id
 from datetime import datetime
 
 class ResultService:
     @staticmethod
     def start_attempt(user_id, quiz_id):
-        attempts = JsonStorage.read('attempts.json')
-        quizzes = JsonStorage.read('quizzes.json')
-        
-        quiz = next((q for q in quizzes if q['quiz_id'] == quiz_id), None)
+        quiz = DB.quizzes.find_one({'quiz_id': quiz_id})
         if not quiz:
             return {"error": "Quiz not found"}
         
         if not quiz.get('allow_retake'):
-            existing = next((a for a in attempts if a['user_id'] == user_id and a['quiz_id'] == quiz_id), None)
+            existing = DB.attempts.find_one({'user_id': user_id, 'quiz_id': quiz_id})
             if existing:
                 return {"error": "You have already attempted this quiz."}
         
@@ -28,19 +25,17 @@ class ResultService:
             "correct_count": 0,
             "wrong_count": 0
         }
-        attempts.append(attempt)
-        JsonStorage.write('attempts.json', attempts)
+        DB.attempts.insert_one(attempt)
+        attempt.pop('_id', None)
         return attempt
 
     @staticmethod
     def submit_attempt(user_id, quiz_id, attempt_id, selected_answers):
-        attempts = JsonStorage.read('attempts.json')
-        attempt_idx = next((i for i, a in enumerate(attempts) if a['attempt_id'] == attempt_id and a['user_id'] == user_id), None)
-        if attempt_idx is None:
+        attempt = DB.attempts.find_one({'attempt_id': attempt_id, 'user_id': user_id})
+        if not attempt:
             return {"error": "Attempt not found"}
             
-        questions = JsonStorage.read('questions.json')
-        quiz_questions = [q for q in questions if q['quiz_id'] == quiz_id]
+        quiz_questions = list(DB.questions.find({'quiz_id': quiz_id}))
         
         correct_count = 0
         wrong_count = 0
@@ -66,17 +61,19 @@ class ResultService:
         percentage = (score / total_questions * 100) if total_questions > 0 else 0
         
         now = datetime.utcnow().isoformat() + "Z"
-        attempts[attempt_idx].update({
-            "status": "completed",
-            "score": score,
-            "total_questions": total_questions,
-            "correct_count": correct_count,
-            "wrong_count": wrong_count,
-            "submitted_at": now
-        })
-        JsonStorage.write('attempts.json', attempts)
         
-        results = JsonStorage.read('results.json')
+        DB.attempts.update_one(
+            {'_id': attempt['_id']},
+            {'$set': {
+                "status": "completed",
+                "score": score,
+                "total_questions": total_questions,
+                "correct_count": correct_count,
+                "wrong_count": wrong_count,
+                "submitted_at": now
+            }}
+        )
+        
         result = {
             "result_id": generate_id("res_"),
             "attempt_id": attempt_id,
@@ -87,20 +84,19 @@ class ResultService:
             "percentage": percentage,
             "submitted_at": now
         }
-        results.append(result)
-        JsonStorage.write('results.json', results)
+        DB.results.insert_one(result)
+        result.pop('_id', None)
         
         return result
 
     @staticmethod
     def get_user_results(user_id):
-        results = JsonStorage.read('results.json')
-        return [r for r in results if r['user_id'] == user_id]
+        return list(DB.results.find({'user_id': user_id}, {'_id': 0}))
 
     @staticmethod
     def get_all_results():
-        return JsonStorage.read('results.json')
+        return list(DB.results.find({}, {'_id': 0}))
 
     @staticmethod
     def get_all_attempts():
-        return JsonStorage.read('attempts.json')
+        return list(DB.attempts.find({}, {'_id': 0}))

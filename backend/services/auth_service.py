@@ -1,4 +1,4 @@
-from services.json_storage import JsonStorage
+from services.db import DB
 from utils.password_utils import hash_password, check_password
 from utils.token_utils import generate_token
 from utils.id_generator import generate_id
@@ -7,8 +7,7 @@ from datetime import datetime
 class AuthService:
     @staticmethod
     def register_user(name, email, password):
-        users = JsonStorage.read('users.json')
-        if any(u['email'] == email for u in users):
+        if DB.users.find_one({'email': email}):
             return {"error": "Email already registered"}
         
         user = {
@@ -19,17 +18,15 @@ class AuthService:
             "role": "user",
             "created_at": datetime.utcnow().isoformat() + "Z"
         }
-        users.append(user)
-        JsonStorage.write('users.json', users)
+        DB.users.insert_one(user)
         return {"message": "User registered successfully", "user_id": user["id"]}
 
     @staticmethod
     def login(email, password, is_admin=False):
-        filename = 'admins.json' if is_admin else 'users.json'
-        users = JsonStorage.read(filename)
+        collection = DB.admins if is_admin else DB.users
         
         # If logging in as admin and no admins exist, create a default admin
-        if is_admin and not users and email == "admin@quiz.com":
+        if is_admin and DB.admins.count_documents({}) == 0 and email == "admin@quiz.com":
             admin = {
                 "id": generate_id("adm_"),
                 "name": "Super Admin",
@@ -38,10 +35,9 @@ class AuthService:
                 "role": "admin",
                 "created_at": datetime.utcnow().isoformat() + "Z"
             }
-            users.append(admin)
-            JsonStorage.write(filename, users)
+            DB.admins.insert_one(admin)
 
-        user = next((u for u in users if u['email'] == email), None)
+        user = collection.find_one({'email': email})
         if not user or not check_password(password, user['password_hash']):
             return {"error": "Invalid email or password"}
         

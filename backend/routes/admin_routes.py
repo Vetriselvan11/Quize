@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from services.quiz_service import QuizService
 from services.result_service import ResultService
-from services.json_storage import JsonStorage
+from services.db import DB
 from utils.decorators import admin_required
 
 admin_bp = Blueprint('admin', __name__)
@@ -9,9 +9,8 @@ admin_bp = Blueprint('admin', __name__)
 @admin_bp.route('/users', methods=['GET'])
 @admin_required
 def get_users():
-    users = JsonStorage.read('users.json')
-    safe_users = [{"id": u["id"], "name": u["name"], "email": u["email"], "created_at": u["created_at"]} for u in users]
-    return jsonify(safe_users), 200
+    users = list(DB.users.find({}, {"_id": 0, "password_hash": 0}))
+    return jsonify(users), 200
 
 @admin_bp.route('/quizzes', methods=['GET'])
 @admin_required
@@ -52,13 +51,9 @@ def get_all_results():
 @admin_bp.route('/dashboard-stats', methods=['GET'])
 @admin_required
 def get_dashboard_stats():
-    users = JsonStorage.read('users.json')
-    quizzes = JsonStorage.read('quizzes.json')
-    attempts = JsonStorage.read('attempts.json')
-    
     return jsonify({
-        "total_users": len(users),
-        "total_quizzes": len(quizzes),
-        "total_attempts": len(attempts),
-        "active_quizzes": len([q for q in quizzes if q.get("status") == "active"])
+        "total_users": DB.users.count_documents({}),
+        "total_quizzes": DB.quizzes.count_documents({}),
+        "total_attempts": DB.attempts.count_documents({}),
+        "active_quizzes": DB.quizzes.count_documents({"status": "active"})
     }), 200

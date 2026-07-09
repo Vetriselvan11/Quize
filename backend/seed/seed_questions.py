@@ -2,9 +2,11 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from services.quiz_service import QuizService
-from services.json_storage import JsonStorage
+from services.db import DB
 import uuid
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Categories: C++, Java, C programming, Python, Data Structures and Algorithms, React.js, JavaScript
 def generate_questions():
@@ -100,9 +102,13 @@ def generate_questions():
                 "created_at": "2026-07-08T10:00:00Z"
             })
             
-    JsonStorage.write('quizzes.json', quizzes)
-    JsonStorage.write('questions.json', all_qs)
-    print(f"Seeded {len(quizzes)} quizzes and {len(all_qs)} questions!")
+    if quizzes:
+        DB.quizzes.delete_many({})
+        DB.quizzes.insert_many(quizzes)
+    if all_qs:
+        DB.questions.delete_many({})
+        DB.questions.insert_many(all_qs)
+    print(f"Seeded {len(quizzes)} quizzes and {len(all_qs)} questions into MongoDB!")
 
 if __name__ == "__main__":
     generate_questions()
