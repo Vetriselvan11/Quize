@@ -15,7 +15,7 @@ const Footer = () => {
         }}>
             <div style={{ display: 'flex', gap: '2rem' }}>
                 <a 
-                    href="https://www.instagram.com/?next=%2F" 
+                    href="https://www.instagram.com/itz_vetrii_?igsh=MTJ2YmN5Zm9hejU4Mw==" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     style={{ color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '0.5rem', transition: 'color 0.2s' }}
