@@ -45,5 +45,18 @@
         "correct_count": 1,
         "wrong_count": 1,
         "submitted_at": "2026-07-08T12:19:31.506640Z"
+    },
+    {
+        "attempt_id": "att_01b1d642a5f4",
+        "user_id": "usr_d0eadf25f55b",
+        "quiz_id": "qz_22c91bdc3054",
+        "status": "completed",
+        "started_at": "2026-07-09T07:16:01.788159Z",
+        "score": 0,
+        "total_questions": 2,
+        "correct_count": 0,
+        "wrong_count": 2,
+        "_id": "d6befd17-9f0c-41a1-8ffd-3bbce00428bf",
+        "submitted_at": "2026-07-09T07:16:08.247298Z"
     }
 ]

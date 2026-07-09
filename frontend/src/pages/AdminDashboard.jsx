@@ -15,40 +15,40 @@ const AdminDashboard = () => {
     return (
         <div>
             <div className="dashboard-header">
-                <h2>Admin Overview</h2>
+                <h2>COMMAND CENTER (ADMIN)</h2>
             </div>
             
             <div className="stats-grid">
                 <div className="card stat-card">
-                    <h3>Total Users</h3>
+                    <h3>Total Devs</h3>
                     <div className="stat-value">{stats.total_users}</div>
                 </div>
                 <div className="card stat-card">
-                    <h3>Total Quizzes</h3>
+                    <h3>Total Arenas</h3>
                     <div className="stat-value">{stats.total_quizzes}</div>
                 </div>
                 <div className="card stat-card">
-                    <h3>Total Attempts</h3>
+                    <h3>Challenges Run</h3>
                     <div className="stat-value" style={{ color: 'var(--primary-color)' }}>{stats.total_attempts}</div>
                 </div>
                 <div className="card stat-card">
-                    <h3>Active Quizzes</h3>
+                    <h3>Active Arenas</h3>
                     <div className="stat-value" style={{ color: 'var(--success-color)' }}>{stats.active_quizzes}</div>
                 </div>
             </div>
             
             <div className="dashboard-section">
-                <h3>Quick Actions</h3>
+                <h3>System Operations</h3>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
                     <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
-                        <h4 style={{ fontSize: '1.125rem' }}>Manage Quizzes</h4>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Create, update, or remove quizzes and their questions.</p>
-                        <Link to="/admin/quizzes" className="btn btn-primary" style={{ marginTop: 'auto' }}>Go to Quizzes</Link>
+                        <h4 style={{ fontSize: '1.125rem', textTransform: 'uppercase', color: 'var(--text-primary)' }}>Manage Arenas</h4>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Create new challenges, update existing matches, and configure rules.</p>
+                        <Link to="/admin/quizzes" className="btn btn-primary" style={{ marginTop: 'auto' }}>Open Arena Manager</Link>
                     </div>
                     <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
-                        <h4 style={{ fontSize: '1.125rem' }}>User Results</h4>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>View student scores, performance, and detailed attempt history.</p>
-                        <Link to="/admin/users" className="btn btn-secondary" style={{ marginTop: 'auto' }}>View Users & Scores</Link>
+                        <h4 style={{ fontSize: '1.125rem', textTransform: 'uppercase', color: 'var(--text-primary)' }}>Player Intel</h4>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>View global leaderboards, investigate player stats, and review match histories.</p>
+                        <Link to="/admin/users" className="btn btn-secondary" style={{ marginTop: 'auto' }}>Access Player Database</Link>
                     </div>
                 </div>
             </div>

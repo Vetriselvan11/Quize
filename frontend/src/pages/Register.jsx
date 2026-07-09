@@ -26,8 +26,8 @@ const Register = () => {
     return (
         <div className="auth-container">
             <div className="auth-card">
-                <h2>Create an Account</h2>
-                <p className="subtitle">Join our platform to test your programming skills.</p>
+                <h2>NEW PLAYER REGISTRATION</h2>
+                <p className="subtitle">Create an account to join the competitive quiz arena.</p>
                 {error && <div className="error-message">{error}</div>}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">

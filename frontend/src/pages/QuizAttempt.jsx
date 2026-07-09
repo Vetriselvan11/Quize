@@ -54,20 +54,20 @@ const QuizAttempt = () => {
             <div className="quiz-header">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <h2>{quiz.title}</h2>
-                    <span className="badge badge-warning" style={{ fontSize: '0.875rem' }}>{quiz.duration} mins</span>
+                    <span className="badge badge-warning" style={{ fontSize: '1rem', padding: '0.5rem 1rem', boxShadow: '0 0 10px rgba(234, 179, 8, 0.4)' }}>TIMER: {quiz.duration}:00</span>
                 </div>
-                <div style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
-                    {answeredCount} of {questions.length} questions answered
+                <div style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                    PROGRESS: {answeredCount} / {questions.length} MATCHES
                 </div>
-                <div style={{ width: '100%', height: '8px', backgroundColor: 'var(--border-color)', borderRadius: '9999px', marginTop: '0.5rem', overflow: 'hidden' }}>
-                    <div style={{ height: '100%', width: `${progress}%`, backgroundColor: 'var(--primary-color)', transition: 'width 0.3s ease' }}></div>
+                <div style={{ width: '100%', height: '10px', backgroundColor: 'var(--border-color)', borderRadius: '9999px', marginTop: '0.5rem', overflow: 'hidden', border: '1px solid var(--border-highlight)' }}>
+                    <div style={{ height: '100%', width: `${progress}%`, backgroundColor: 'var(--primary-color)', transition: 'width 0.3s ease', boxShadow: '0 0 10px var(--primary-color)' }}></div>
                 </div>
             </div>
             
             {questions.map((q, idx) => (
                 <div key={q.question_id} className="card question-card">
                     <div className="question-text">
-                        <span style={{ color: 'var(--text-secondary)', marginRight: '0.5rem' }}>{idx + 1}.</span> {q.question_text}
+                        <span style={{ color: 'var(--primary-color)', marginRight: '0.75rem', fontSize: '1.5rem' }}>{idx + 1}.</span> {q.question_text}
                     </div>
                     <ul className="options-list">
                         {['option_a', 'option_b', 'option_c', 'option_d'].map((opt, i) => (
@@ -78,12 +78,12 @@ const QuizAttempt = () => {
                             >
                                 <span style={{ 
                                     display: 'inline-flex', alignItems: 'center', justifyContent: 'center', 
-                                    width: '24px', height: '24px', borderRadius: '50%', 
-                                    border: `1px solid ${answers[q.question_id] === i ? 'var(--primary-color)' : 'var(--text-muted)'}`,
-                                    marginRight: '1rem',
+                                    width: '32px', height: '32px', borderRadius: '4px', 
+                                    border: `2px solid ${answers[q.question_id] === i ? 'var(--primary-color)' : 'var(--text-muted)'}`,
+                                    marginRight: '1.25rem',
                                     backgroundColor: answers[q.question_id] === i ? 'var(--primary-color)' : 'transparent',
                                     color: answers[q.question_id] === i ? 'white' : 'var(--text-secondary)',
-                                    fontSize: '0.75rem', fontWeight: 'bold'
+                                    fontSize: '0.875rem', fontWeight: '800', transition: 'all 0.2s'
                                 }}>
                                     {String.fromCharCode(65 + i)}
                                 </span>
@@ -95,8 +95,8 @@ const QuizAttempt = () => {
             ))}
             
             <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '2rem', paddingBottom: '4rem' }}>
-                <button onClick={handleSubmit} className="btn btn-primary" style={{ padding: '0.875rem 2rem', fontSize: '1rem', boxShadow: 'var(--shadow-md)' }}>
-                    Submit Assessment
+                <button onClick={handleSubmit} className="btn btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.125rem', boxShadow: 'var(--shadow-md)' }}>
+                    END MATCH
                 </button>
             </div>
         </div>

@@ -68,11 +68,11 @@ const ManageQuizzes = () => {
     return (
         <div>
             <div className="dashboard-header">
-                <h2>Manage Quizzes</h2>
+                <h2>ARENA MANAGER</h2>
             </div>
             
             <div className="card">
-                <h3 style={{ marginBottom: '1.5rem', color: 'var(--text-primary)' }}>{editingQuizId ? 'Edit Quiz' : 'Create New Quiz'}</h3>
+                <h3 style={{ marginBottom: '1.5rem', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{editingQuizId ? 'EDIT MATCH SETTINGS' : 'CREATE NEW ARENA'}</h3>
                 <form onSubmit={handleCreateQuiz}>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem' }}>
                         <div className="form-group" style={{ marginBottom: 0 }}>
@@ -80,13 +80,13 @@ const ManageQuizzes = () => {
                             <input type="text" value={newQuiz.title} onChange={e => setNewQuiz({...newQuiz, title: e.target.value})} required placeholder="e.g. React Basics" />
                         </div>
                         <div className="form-group" style={{ marginBottom: 0 }}>
-                            <label>Category</label>
+                            <label>Class/Category</label>
                             <input type="text" value={newQuiz.category} onChange={e => setNewQuiz({...newQuiz, category: e.target.value})} required placeholder="e.g. Frontend" />
                         </div>
                     </div>
                     <div className="form-group" style={{ marginTop: '1.25rem' }}>
                         <label>Description</label>
-                        <input type="text" value={newQuiz.description} onChange={e => setNewQuiz({...newQuiz, description: e.target.value})} required placeholder="Short description of the quiz..." />
+                        <input type="text" value={newQuiz.description} onChange={e => setNewQuiz({...newQuiz, description: e.target.value})} required placeholder="Short description of the arena..." />
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem', marginTop: '1.25rem' }}>
                         <div className="form-group" style={{ marginBottom: 0 }}>
@@ -98,19 +98,19 @@ const ManageQuizzes = () => {
                             <input type="datetime-local" value={newQuiz.end_time} onChange={e => setNewQuiz({...newQuiz, end_time: e.target.value})} required />
                         </div>
                         <div className="form-group" style={{ marginBottom: 0 }}>
-                            <label>Duration (mins)</label>
+                            <label>Time Limit (mins)</label>
                             <input type="number" value={newQuiz.duration} onChange={e => setNewQuiz({...newQuiz, duration: parseInt(e.target.value)})} required min="1" />
                         </div>
                     </div>
                     <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
-                        <button type="submit" className="btn btn-primary">{editingQuizId ? 'Save Changes' : 'Create Quiz'}</button>
-                        {editingQuizId && <button type="button" onClick={handleCancelEdit} className="btn btn-secondary">Cancel</button>}
+                        <button type="submit" className="btn btn-primary">{editingQuizId ? 'SAVE SETTINGS' : 'CREATE ARENA'}</button>
+                        {editingQuizId && <button type="button" onClick={handleCancelEdit} className="btn btn-secondary">CANCEL</button>}
                     </div>
                 </form>
             </div>
 
             <div className="dashboard-section" style={{ marginTop: '3rem' }}>
-                <h3 style={{ marginBottom: '1.5rem' }}>Existing Quizzes</h3>
+                <h3 style={{ marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>ACTIVE ARENAS</h3>
                 <div className="data-table-container">
                     <table className="data-table">
                         <thead>

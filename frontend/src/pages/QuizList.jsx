@@ -22,14 +22,14 @@ const QuizList = () => {
     return (
         <div>
             <div className="dashboard-header">
-                <h2>Available Quizzes</h2>
+                <h2>ACTIVE MATCH ARENAS</h2>
             </div>
             
             <div className="quiz-grid" style={{ marginTop: '1.5rem' }}>
                 {quizzes.length === 0 ? (
                     <div className="empty-state" style={{ gridColumn: '1 / -1' }}>
-                        <h3 style={{ color: 'var(--text-primary)' }}>No Quizzes Found</h3>
-                        <p style={{ color: 'var(--text-secondary)' }}>There are no active quizzes available at the moment.</p>
+                        <h3 style={{ color: 'var(--text-primary)' }}>NO ACTIVE ARENAS</h3>
+                        <p style={{ color: 'var(--text-secondary)' }}>Check back later for new matches.</p>
                     </div>
                 ) : quizzes.map(q => {
                     const now = new Date();
@@ -56,12 +56,12 @@ const QuizList = () => {
                             <div className="quiz-meta">
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                     <span className={`badge ${badgeClass}`}>{statusText}</span>
-                                    <span style={{ fontWeight: '500', color: 'var(--text-primary)' }}>{q.duration} min</span>
+                                    <span style={{ fontWeight: '700', color: 'var(--primary-color)' }}>{q.duration} MIN</span>
                                 </div>
-                                <span>Category: {q.category}</span>
+                                <span style={{ textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: '600' }}>Class: {q.category}</span>
                             </div>
                             <button onClick={() => startQuiz(q.quiz_id)} className={`btn ${isLive ? 'btn-primary' : 'btn-secondary'}`} style={{ width: '100%', marginTop: 'auto' }}>
-                                {isLive ? 'Start Assessment' : 'View Status'}
+                                {isLive ? 'JOIN MATCH' : 'VIEW STATS'}
                             </button>
                         </div>
                     );

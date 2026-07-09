@@ -196,5 +196,27 @@
         "score": 1,
         "percentage": 50.0,
         "submitted_at": "2026-07-08T12:19:31.506640Z"
+    },
+    {
+        "result_id": "res_3a8e0f612051",
+        "attempt_id": "att_01b1d642a5f4",
+        "user_id": "usr_d0eadf25f55b",
+        "quiz_id": "qz_22c91bdc3054",
+        "answers": [
+            {
+                "question_id": "q_dd16cdacadf8",
+                "selected_option": 0,
+                "is_correct": false
+            },
+            {
+                "question_id": "q_c42fafed993c",
+                "selected_option": 3,
+                "is_correct": false
+            }
+        ],
+        "score": 0,
+        "percentage": 0.0,
+        "submitted_at": "2026-07-09T07:16:08.247298Z",
+        "_id": "7e4baf94-eed5-4607-a068-d445b4c2e7e6"
     }
 ]

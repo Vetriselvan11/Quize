@@ -28,9 +28,9 @@ const AdminLogin = () => {
 
     return (
         <div className="auth-container">
-            <div className="auth-card" style={{ borderTop: '4px solid var(--primary-color)' }}>
-                <h2>Admin Portal</h2>
-                <p className="subtitle">Sign in to manage quizzes and users.</p>
+            <div className="auth-card" style={{ borderTop: '3px solid var(--warning-color)' }}>
+                <h2>ADMINISTRATOR ACCESS</h2>
+                <p className="subtitle">System login for quiz and player management.</p>
                 {error && <div className="error-message">{error}</div>}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">

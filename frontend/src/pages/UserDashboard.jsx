@@ -36,42 +36,42 @@ const UserDashboard = () => {
     return (
         <div>
             <div className="dashboard-header">
-                <h2>My Dashboard</h2>
+                <h2>DEV DASHBOARD</h2>
             </div>
             
             <div className="stats-grid">
                 <div className="card stat-card">
-                    <h3>Student Profile</h3>
+                    <h3>Developer Profile</h3>
                     <div style={{ marginTop: '0.5rem' }}>
-                        <div style={{ fontWeight: '600', fontSize: '1.25rem', color: 'var(--text-primary)' }}>{user?.name}</div>
-                        <div style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>{user?.email}</div>
+                        <div style={{ fontWeight: '800', fontSize: '1.25rem', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }} className="code-text">&lt;{user?.name}/&gt;</div>
+                        <div style={{ color: 'var(--primary-color)', fontSize: '0.875rem', fontWeight: '600' }} className="code-text">{user?.email}</div>
                     </div>
                 </div>
                 <div className="card stat-card">
-                    <h3>Completed Quizzes</h3>
+                    <h3>Challenges Completed</h3>
                     <div className="stat-value">{completedCount}</div>
                 </div>
                 <div className="card stat-card">
-                    <h3>Available Now</h3>
+                    <h3>Active Arenas</h3>
                     <div className="stat-value" style={{ color: 'var(--success-color)' }}>{availableCount}</div>
                 </div>
                 <div className="card stat-card">
-                    <h3>Upcoming Quizzes</h3>
+                    <h3>Upcoming Arenas</h3>
                     <div className="stat-value" style={{ color: 'var(--warning-color)' }}>{upcomingCount}</div>
                 </div>
             </div>
 
             <div className="dashboard-section">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-                    <h3 style={{ margin: 0 }}>Available Quizzes</h3>
+                    <h3 style={{ margin: 0 }}>Active Challenges</h3>
                     <Link to="/quizzes" className="btn btn-secondary" style={{ padding: '0.375rem 0.75rem', fontSize: '0.875rem' }}>View All</Link>
                 </div>
                 
                 <div className="quiz-grid">
                     {quizzes.length === 0 ? (
                         <div className="empty-state" style={{ gridColumn: '1 / -1' }}>
-                            <h3 style={{ color: 'var(--text-primary)' }}>No Quizzes Available</h3>
-                            <p style={{ color: 'var(--text-secondary)' }}>Check back later for new quizzes.</p>
+                            <h3 style={{ color: 'var(--text-primary)' }}>No Challenges Available</h3>
+                            <p style={{ color: 'var(--text-secondary)' }}>Check back later for new coding arenas.</p>
                         </div>
                     ) : quizzes.slice(0, 3).map(q => {
                         const now = new Date();
@@ -98,12 +98,12 @@ const UserDashboard = () => {
                                 <div className="quiz-meta">
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <span className={`badge ${badgeClass}`}>{statusText}</span>
-                                        <span style={{ fontWeight: '500', color: 'var(--text-primary)' }}>{q.duration} min</span>
+                                        <span style={{ fontWeight: '700', color: 'var(--primary-color)' }} className="code-text">{q.duration} MIN</span>
                                     </div>
-                                    <span>Category: {q.category}</span>
+                                    <span style={{ textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: '600' }} className="code-text">Class: {q.category}</span>
                                 </div>
                                 <Link to={`/quizzes`} className={`btn ${isLive ? 'btn-primary' : 'btn-secondary'}`} style={{ width: '100%', marginTop: 'auto' }}>
-                                    {isLive ? 'Start Quiz' : 'View Details'}
+                                    {isLive ? 'START CODING' : 'VIEW STATS'}
                                 </Link>
                             </div>
                         );
@@ -112,7 +112,7 @@ const UserDashboard = () => {
             </div>
             
             <div className="dashboard-section">
-                <h3>Recent Results</h3>
+                <h3>Challenge History</h3>
                 <div className="data-table-container">
                     {results.length === 0 ? (
                         <div className="empty-state">

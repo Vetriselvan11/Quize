@@ -52,12 +52,12 @@ const ManageQuestions = () => {
     return (
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
             <div className="dashboard-header" style={{ marginBottom: '1.5rem' }}>
-                <h2>Manage Questions</h2>
-                <button onClick={() => navigate('/admin/quizzes')} className="btn btn-secondary" style={{ padding: '0.375rem 0.75rem' }}>Back to Quizzes</button>
+                <h2>ARENA CONFIG: QUESTIONS</h2>
+                <button onClick={() => navigate('/admin/quizzes')} className="btn btn-secondary" style={{ padding: '0.375rem 0.75rem' }}>BACK TO ARENAS</button>
             </div>
             
             <div className="card">
-                <h3 style={{ marginBottom: '1.5rem', color: 'var(--text-primary)' }}>Add New Question</h3>
+                <h3 style={{ marginBottom: '1.5rem', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>ADD NEW CHALLENGE</h3>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Question Text</label>

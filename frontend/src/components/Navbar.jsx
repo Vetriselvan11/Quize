@@ -17,7 +17,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <Link to="/" className="navbar-brand">
-                <span style={{ color: 'var(--text-primary)' }}>Dev</span>Quiz
+                <span style={{ color: 'var(--text-primary)' }}>DEV_</span>QUIZ
             </Link>
             
             <div className="navbar-links">
@@ -44,8 +44,8 @@ const Navbar = () => {
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: '1.2' }}>
-                                <span style={{ fontSize: '0.875rem', fontWeight: '600', color: 'var(--text-primary)' }}>{user.name}</span>
-                                <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{user.role === 'admin' ? 'Administrator' : 'Student'}</span>
+                                <span style={{ fontSize: '0.875rem', fontWeight: '700', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{user.name}</span>
+                                <span style={{ fontSize: '0.7rem', color: 'var(--primary-color)', textTransform: 'uppercase', fontWeight: '600' }}>{user.role === 'admin' ? 'SYS_ADMIN' : 'PLAYER_01'}</span>
                             </div>
                             <button onClick={handleLogout} className="btn btn-secondary" style={{ padding: '0.375rem 0.75rem', fontSize: '0.875rem' }}>
                                 Sign out

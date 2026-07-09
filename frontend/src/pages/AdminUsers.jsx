@@ -34,8 +34,8 @@ const AdminUsers = () => {
     return (
         <div>
             <div className="dashboard-header" style={{ marginBottom: '2rem' }}>
-                <h2>User Details & Scores</h2>
-                <Link to="/admin" className="btn btn-secondary">Back to Dashboard</Link>
+                <h2>PLAYER INTEL & ANALYTICS</h2>
+                <Link to="/admin" className="btn btn-secondary">BACK TO HQ</Link>
             </div>
             
             <div className="dashboard-section">

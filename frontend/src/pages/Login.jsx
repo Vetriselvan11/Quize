@@ -29,8 +29,8 @@ const Login = () => {
     return (
         <div className="auth-container">
             <div className="auth-card">
-                <h2>Welcome Back</h2>
-                <p className="subtitle">Sign in to continue to your dashboard.</p>
+                <h2>PLAYER LOGIN</h2>
+                <p className="subtitle">Enter your credentials to access the quiz lobby.</p>
                 {error && <div className="error-message">{error}</div>}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
